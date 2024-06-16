@@ -1,0 +1,35 @@
+﻿#galleryRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    flex-grow: 1;
+}
+
+.download-btn {
+    margin-top: auto;
+}
+
+@supports not (gap: 20px) {
+    .gallery-item {
+        margin: 10px;
+    }
+}

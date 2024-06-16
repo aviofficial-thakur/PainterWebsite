@@ -1,0 +1,28 @@
+﻿
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Responsive styling */
+@media (min-width: 768px) {
+    .card {
+        width: calc(50% - 20px);
+        margin-right: 20px;
+    }
+
+        .card:last-child {
+            margin-right: 0;
+        }
+}
+
+@media (min-width: 992px) {
+    .card {
+        width: calc(33.33% - 20px);
+    }
+}
+
+

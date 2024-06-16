@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/sweetalert-dev.js"></script>
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<main aria-labelledby="title">
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 bg-hero" style="margin-bottom: 90px;">
+        <div class="container py-5">
+            <div class="row justify-content-start">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h1 class="display-1 text-dark">About Us</h1>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row gx-0 mb-3 mb-lg-0">
+                <div class="col-lg-6 my-lg-5 py-lg-5">
+                    <div class="about-start bg-primary p-5">
+                        <h1 class="display-5 mb-4">Welcome To Painter</h1>
+                        <p>At Painter, we believe in transforming spaces through the power of color and creativity. With years of experience and a passion for excellence, we offer top-notch painting services for both residential and commercial projects. Our skilled team uses high-quality materials and innovative techniques to ensure a flawless finish that lasts. Whether you’re looking to refresh a single room or revamp your entire property, Painter is here to bring your vision to life with vibrant, lasting colors.</p>
+                        @*<a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Contact Us</a>*@
+                    </div>
+                </div>
+                <div class="col-lg-6" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="~/img/about-1.jpg" style="object-fit: cover;">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row gx-0">
+                <div class="col-lg-6" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="~/img/about-2.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 my-lg-5 py-lg-5">
+                    <div class="about-end bg-primary p-5">
+                        <h1 class="display-5 mb-4">Why Choose Us?</h1>
+                        <p>We are committed to delivering the highest quality painting services. With years of experience, our skilled team ensures precise and flawless results using only the best paints and materials for a long-lasting, beautiful finish. Your satisfaction is our top priority, and we work closely with you to understand and bring your vision to life. We offer competitive pricing without compromising on quality, ensuring you get the best value for your investment. Our projects are completed on schedule, maintaining a clean work environment and professional conduct throughout. Choose Painter for expertise, quality, and a hassle-free painting experience.</p>
+                        @*<a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Get A Quote</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    <!-- Quote Start -->
+    <div class="container-fluid bg-primary bg-quote py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row g-0 justify-content-start">
+                <div class="col-lg-6">
+                    <div class="bg-white text-center p-5">
+                        <h1 class="mb-4">Get A Quote</h1>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-light border-0" id="txtname" placeholder="Your Full Name" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-light border-0" id="txtemailid" placeholder="Your Email" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-light border-0" id="txtmobileno" placeholder="Your Mobile No." maxlength="10" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-light border-0" rows="5" id="txtmessage" placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-secondary w-100 py-3" type="submit" onclick="SaveUser(1);">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quote End -->
+    <!-- Team Start -->
+    @*<div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h1 class="display-5">Dedicated Team Members</h1>
+                <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-social">
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="mt-auto mb-3">
+                                <h4 class="mb-1">Full Name</h4>
+                                <span class="text-uppercase">Designation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-social">
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="mt-auto mb-3">
+                                <h4 class="mb-1">Full Name</h4>
+                                <span class="text-uppercase">Designation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-item">
+                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
+                        <div class="team-text">
+                            <div class="team-social">
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="mt-auto mb-3">
+                                <h4 class="mb-1">Full Name</h4>
+                                <span class="text-uppercase">Designation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </di*@v>
+    <!-- Team End -->
+    <!-- Call To Action Start -->
+    <!--<div class="container-fluid bg-primary bg-call-to-action py-5" style="margin-top: 90px;">
+        <div class="container py-5">
+            <div class="row g-0 justify-content-start">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-4">Do You Have Any Project?</h1>
+                    <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                    <a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Call To Action Start -->
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/ContactJS.js"></script>

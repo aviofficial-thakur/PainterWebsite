@@ -1,0 +1,368 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/HomeFile/style.css" rel="stylesheet" />
+    <link href="~/css/popupcss.css" rel="stylesheet" />
+    <script src="~/Scripts/sweetalert-dev.js"></script>
+    <link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+
+</head>
+<main class="main">
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 bg-hero" style="margin-bottom: 90px;">
+        <div class="container py-5">
+            <div class="row justify-content-start">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h1 class="display-1 text-dark">We Bring Your Home To Lively Colors</h1>
+                    <p class="fs-4 text-dark mb-4">At Painter, we specialize in bringing your vision to life with our top-quality painting services. Whether you're looking to refresh a single room or transform your entire home, our team of skilled painters is here to provide exceptional results.</p>
+                    <!--<div class="pt-2">
+                        <a href="#" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mx-2" >Get A Quote</a>-->
+                        @*<a href="" class="btn btn-outline-secondary rounded-pill py-md-3 px-md-5 mx-2">Contact Us</a>*@
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- Team Start -->
+
+    @*<div class="text-center mx-auto mb-5" style="max-width: 500px;">
+        <h1 class="display-5">Dedicated Team Members</h1>
+        <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+    </div>
+    <div class="row g-3">
+        <div class="col-lg-4 col-md-6">
+            <div class="team-item">
+                <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
+                <div class="team-text">
+                    <div class="team-social">
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="mt-auto mb-3">
+                        <h4 class="mb-1">Full Name</h4>
+                        <span class="text-uppercase">Designation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="team-item">
+                <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
+                <div class="team-text">
+                    <div class="team-social">
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="mt-auto mb-3">
+                        <h4 class="mb-1">Full Name</h4>
+                        <span class="text-uppercase">Designation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="team-item">
+                <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
+                <div class="team-text">
+                    <div class="team-social">
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="mt-auto mb-3">
+                        <h4 class="mb-1">Full Name</h4>
+                        <span class="text-uppercase">Designation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <!-- Team End -->
+    <!-- Testimonial Start -->
+    <div class="container-fluid bg-primary bg-testimonial py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row g-0 justify-content-end">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-4">Testimonials</h1>
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal"><i class="fa fa-quote-left text-secondary me-3"></i>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid p-1 bg-secondary" src="img/testimonial-1.jpg" alt="">
+                                <div class="ps-3">
+                                    <h3>Client Name</h3>
+                                    <span class="text-uppercase">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal"><i class="fa fa-quote-left text-secondary me-3"></i>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                            <div class="d-flex align-items-center">
+                                <img class="img-fluid p-1 bg-secondary" src="img/testimonial-2.jpg" alt="">
+                                <div class="ps-3">
+                                    <h3>Client Name</h3>
+                                    <span class="text-uppercase">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+        @*<div class="container py-5">*@
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h1 class="display-5">Latest Articles From Painting Blog</h1>
+            <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+        </div>
+        <div class="wrapper">
+            <!-- <i id="left" class="fa-solid fa-angle-left"></i> -->
+            <div class="carousel" id="homeimagebind">
+
+            </div>
+            <!-- <i id="right" class="fa-solid fa-angle-right"></i> -->
+        </div>
+        @*</div>*@
+    </div>
+    <!-- Blog End -->
+    <!-- Call To Action Start -->
+    <div class="container-fluid bg-primary bg-call-to-action py-5" style="margin-top: 90px;">
+        <div class="container py-5">
+            <div class="row g-0 justify-content-start">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-4">Do You Have Any Project?</h1>
+                    <p class="fs-4 fw-normal">Our team of professional painters is ready to bring your vision to life. Whether it's a residential, commercial, or custom project, we have the expertise to deliver exceptional results. Let us help you transform your space with vibrant and lasting colors.</p>
+                    <a href="#" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4" onclick="openPopup()">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call To Action Start -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <a class="prev">&#10094;</a>
+            <img class="modal-image" id="modalImage">
+            <a class="next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <div class="row">
+                <div class="col-sm-6 slide-popup"><h4 id="modelname">Get A Quote</h4></div>
+                <div class="col-sm-6">
+                    <!-- Close button -->
+                    <button class="close" onclick="closePopup()">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+            <div>
+                <input type="text" id="txtname" placeholder="Your Full Name" required>
+                <input type="email" id="txtemailid" placeholder="Your Email" required>
+                <input type="text" id="txtmobileno" maxlength="10" placeholder="Your Mobile No." required>
+                <textarea id="txtmessage" placeholder="Message" required></textarea>
+                <button type="submit" onclick="SaveUser(2);">Send Message</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="~/HomeFile/script.js"></script>
+<script src="~/js/ContactJS.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/js/main.js"></script>
+
+<script>
+    $(document).ready(function () {
+        openPopup();
+        GetFileList();
+    });
+    function openPopup() {
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    
+    function renderCards(images) {
+        const container = $(".card-container");
+        container.empty(); // Clear previous cards
+
+        images.forEach(image => {
+            // Create card element
+            const card = $("<div>").addClass("card");
+
+            const imageElement = $("<img>").attr("src", image.path);
+
+            // Append image element to card
+            card.append(imageElement);
+
+            // Append card to container
+            container.append(card);
+        });
+    }
+    let currentIndex = 0;
+    let isZoomed = false;
+
+    function bindImagesToCarousel(data) {
+        const carouselDiv = document.getElementById('homeimagebind');
+        carouselDiv.innerHTML = ''; // Clear existing images
+
+        const baseUrl = window.location.origin; // Get the base URL
+        const imagesCount = data.length; // Get the count of images
+
+        // Add class based on the count of images
+        if (imagesCount === 1) {
+            carouselDiv.classList.add('one-image');
+        } else if (imagesCount === 2) {
+            carouselDiv.classList.add('two-images');
+        }
+
+        data.forEach((item, index) => {
+            let filePath = item.FilePath;
+            filePath = filePath.replace('~', baseUrl);
+
+            const img = document.createElement('img');
+            img.src = filePath;
+            img.alt = 'image';
+            img.draggable = false;
+            img.onclick = function () {
+                currentIndex = index; // Set the currentIndex to the clicked image index
+                showModal(data);
+            }
+            carouselDiv.appendChild(img);
+        });
+    }
+
+    function showModal(data) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeBtn = modal.querySelector('.close-btn');
+        const prevBtn = modal.querySelector('.prev');
+        const nextBtn = modal.querySelector('.next');
+
+        let filePath = data[currentIndex].FilePath;
+        filePath = filePath.replace('~', window.location.origin);
+        modalImage.src = filePath;
+
+        // Show the modal
+        modal.style.display = 'block';
+
+        // Close the modal when clicked on the close button
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+            isZoomed = false;
+            modalImage.classList.remove('zoomed');
+        }
+
+        // Close the modal when clicked outside
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                isZoomed = false;
+                modalImage.classList.remove('zoomed');
+                //$('.prev').show();
+                //$('.next').show();
+            }
+        }
+
+        modalImage.onclick = function () {
+            modalImage.classList.toggle('zoomed');
+
+            if (modalImage.classList.contains('zoomed')) {
+                $('.prev').hide();
+                $('.next').hide();
+            } else {
+                $('.prev').show();
+                $('.next').show();
+            }
+        }
+
+        // Previous image
+        // Previous image
+        prevBtn.onclick = function () {
+            currentIndex = (currentIndex - 1 + data.length) % data.length;
+            let filePath = data[currentIndex].FilePath;
+            filePath = filePath.replace('~', window.location.origin);
+            modalImage.src = filePath;
+            isZoomed = false; // Set isZoomed to false
+            modalImage.classList.remove('zoomed');
+        }
+
+        // Next image
+        nextBtn.onclick = function () {
+            currentIndex = (currentIndex + 1) % data.length;
+            let filePath = data[currentIndex].FilePath;
+            filePath = filePath.replace('~', window.location.origin);
+            modalImage.src = filePath;
+            isZoomed = false;
+            modalImage.classList.remove('zoomed');
+        }
+    }
+
+    // Call renderCards function with your backend data
+    function GetFileList() {
+        try {
+            $.ajax({
+                url: "/Home/GetImageData",
+                method: "GET",
+                data: {},
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    bindImagesToCarousel(data);
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error occurred during AJAX call:", error);
+                }
+            });
+        } catch (e) {
+            console.log('Exception from User method Name is SaveUser() :--->' + e);
+        }
+    }
+
+
+</script>

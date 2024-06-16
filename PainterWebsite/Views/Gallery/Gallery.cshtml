@@ -1,0 +1,513 @@
+﻿
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Layout/MainLayout.cshtml";
+}
+
+<input type="hidden" id="hdngalleryid" value="0" />
+<style>
+    .table {
+        border-collapse: collapse;
+        border-bottom: 1px solid #ccc; /* Adjust color as needed */
+    }
+
+        .table tr:last-child {
+            border-bottom: 1px solid #ccc; /* Adjust color as needed */
+        }
+    /* Custom CSS for DataTables bottom section */
+    .dataTables_wrapper .dataTables_info {
+        float: left;
+        font-size: 14px; /* Adjust font size here */
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        float: right;
+        margin-right: 10px; /* Adjust as needed */
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            margin-left: 2px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            color: #333;
+            cursor: pointer;
+            font-size: 10px; /* Ensure consistent font size */
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background-color: #007bff;
+                color: #fff;
+                border: 1px solid #007bff;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                background-color: #ccc;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+                cursor: not-allowed;
+            }
+    .modal-content1 {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0.3rem;
+        outline: 0;
+        top: 0px;
+    }
+    .modal-header1 {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 1rem 1rem;
+        border-bottom: 1px solid #dee2e6;
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+        padding-left: 634px;
+    }
+
+    .view-icon {
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+
+
+  /*  .user-pic img {
+        width: 767px;
+        height: 500px;
+        border-radius: 12px;
+        border: 3px solid #ffffff;
+        box-shadow: 0px 0px 5px 0px #b5b5b5;
+        cursor: -moz-zoom-in;
+        cursor: -webkit-zoom-in;
+        cursor: zoom-in;
+    }*/
+
+    .user-pic {
+        position: relative;
+        display: inline-block;
+    }
+
+        .user-pic img {
+            width: 767px;
+            height: 500px;
+            border-radius: 12px;
+            border: 3px solid #ffffff;
+            box-shadow: 0px 0px 5px 0px #b5b5b5;
+            transition: transform 0.3s ease; /* Add smooth transition */
+            cursor: -moz-zoom-in;
+            cursor: -webkit-zoom-in;
+            cursor: zoom-in;
+        }
+
+        .user-pic.zoomed img {
+            transform: scale(2); /* Zoom in effect */
+        }
+    
+</style>
+<br />
+<h2 style="text-align:center">Add Gallery</h2>
+<div class="row">
+    <div class="col-sm-10"></div>
+    <div class="col-sm-2"><button id="openModalBtn">Add</button></div>
+
+</div>
+
+
+<div id="myModal" class="modal1">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-sm-6 slide-popup"><h4 id="modelname">Add Gallery</h4></div>
+            <div class="col-sm-6">
+                <!-- Close button -->
+                <div class="close" onclick="slider_Closemodel('myModal'); ResetData();">
+                    <i class="fa fa-close"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <span>File Name</span>
+                <input type="text" class="form-control" id="txtfilename">
+            </div>
+            <div class="col-sm-3">
+                <span>Status</span>
+                <select class="form-control" id="ddlstatus" disabled>
+                    <option selected="selected" value="1">Active</option>
+                    <option value="0">InActive</option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <span>File Upload</span>
+                <input type="file" class="form-control" id="txtfileupload">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2">
+
+                <input type="button" id="btnSubmit" class="btn btn-success" value="Save" onclick="SaveGallery();" />
+            </div>
+            <div class="col-sm-2">
+
+                <input type="button" id="btnReset" class="btn btn-success" value="Reset" onclick="ResetData();" />
+            </div>
+            <div class="col-sm-8">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <br />
+    <div class="table-responsive ">
+        <table id="tblgallery" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>FileName</th>
+                    <th>View</th>
+                    @*<th>Download</th>*@
+                    <th>Status</th>
+                    <th>Edit</th>
+                    @*<th>Delete</th>*@
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="descriptionsModal" class="modal fade" style="top : 10px">
+    <div class="modal-dialog modal-lg">
+         
+        <div class="modal-content1">
+            <div class="modal-header1">
+                @*<h4>Modal content</h4>*@
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <a href="#" id="downloadLink" download>
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="closepic" onclick="Reset()" data-dismiss="modal">×</button>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="modal-body">
+                <div class="user-pic">
+                    <img src="" id="UserProfile" alt="Profile User" />
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<link href="~/AdminFiles/CommonFiles/CSS/modelCSS.css" rel="stylesheet" />
+<script src="~/AdminFiles/CommonFiles/js/ModelJS.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link href="~/bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/bootstrap-4.3.1-dist/css/bootstrap-grid.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $(document).ready(function () {
+        GetGalleryList();
+        $('.close').click(function () {
+            slider_Closemodel('myModal');
+            ResetData();
+        });
+
+    });
+
+    $('.closepic').click(function () {
+        $("#descriptionsModal").modal('hide');
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const userPic = document.querySelector('.user-pic');
+
+        userPic.addEventListener('click', function () {
+            this.classList.toggle('zoomed'); // Toggle zoomed class on click
+        });
+    });
+    function GetGalleryList() {
+        if ($.fn.DataTable.isDataTable('#tblgallery')) {
+            $('#tblgallery').DataTable().destroy();
+        }
+        try {
+            $.ajax({
+                url: "/Gallery/GetGalleryData",
+                method: "GET",
+                data: {},
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    var table = $("#tblgallery").DataTable({
+                        language: {
+                            paginate: {
+                                "previous": "<",
+                                "next": ">"
+                            }, emptyTable: function () {
+                                return '<center>No records Found</center>';
+                            },
+                        },
+                        "scrollX": true,
+                        //"bDestroy": true,
+                        processing: false, // for show progress bar
+                        serverSide: false, // for process server side
+                        filter: false, // this is for disable filter (search box)
+                        orderMulti: false, // for disable multiple column at once
+                        pageLength: 10,
+                        dom: '<"top"f>rt<"bottom"ilp><"clear">',
+                        lengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
+                        data: data,
+                        order: [],
+                        "autoWidth": false,
+                        columnDefs: [
+                            {
+                                "targets": [0],
+                                "searchable": false,
+                                "orderable": false,
+                            }
+
+                        ],
+
+                        "columns": [
+                            { "data": "FileName" },
+                            {
+                                data: null,
+                                render: function (data, type, full, meta) {
+                                    return "<span class='view-icon' onclick='openModal(\"" + data.FilePath + "\");'><i class='fas fa-eye'></i></span>";
+                                }
+                            },
+
+
+                            { "data": "Status" },
+                            {
+                                data: null, render: function (data, type, full, meta) {
+
+                                    return "<a href='#' class='btn btn-info' onclick='EditImage(" + data.FileID + ");'>Edit</a>";
+                                }
+
+                            },
+                            //{
+                            //    data: null, render: function (data, type, row) {
+                            //        return "<a href='#' class='btn btn-danger' onclick=DeleteData('" + row.CustomerID + "'); >Delete</a>";
+                            //    }
+                            //},
+                        ]
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error occurred during AJAX call:", error);
+                }
+            });
+
+
+        } catch (e) {
+            console.log('Exception from User method Name is SaveUser() :--->' + e);
+        }
+    }
+
+
+
+    function SaveGallery() {
+        debugger;
+        var fileData = new FormData();
+        var fileUpload = $("#txtfileupload").get(0);
+
+        var files = $("#txtfileupload").get(0).files;
+        var extension = $("#txtfileupload").val().split('.').pop().toUpperCase();
+        var TotalSize = 0;
+        if (files.length > 0) {
+            fileData.append("txtfileupload", files[0]);
+            TotalSize += files[0].size;
+        }
+
+        if (files.length > 0) {
+            if (extension != "JPG" && extension != "JPEG" && extension != "PNG") {
+                swal({ title: "Upload Jpg, Jpeg, Png format only", type: "error", showConfirmButton: true });
+                $("#txtfileupload").val('');
+                return false;
+            }
+        }
+
+        fileData.append('Fileid', $('#hdngalleryid').val() == 0 ? 0 : $('#hdngalleryid').val());
+        fileData.append('FileName', $("#txtfilename").val());
+        fileData.append('Status', $("#ddlstatus").val());
+        try {
+            $.ajax({
+                type: "POST",
+                url: "/Gallery/GallerySave",
+                data: fileData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (result) {
+                    debugger;
+                    if (result === "1" || result === "2") {
+                        slider_Closemodel('myModal');
+                        swal({ title: result === "1" ? "Successfully Added..." : "Updated Successfully...", type: "success", timer: 3000, showConfirmButton: false });
+
+                        ResetData();
+                        setTimeout(function () {
+                            GetGalleryList();
+
+                        }, 500); // Adjust delay time as needed
+                    }
+                    else {
+                        swal({ title: "Not Saved", type: "error", showConfirmButton: true });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error occurred during AJAX call:", status, error);
+                }
+            });
+
+
+        } catch (e) {
+            console.log('Exception from User method Name is SaveGallery() :--->' + e);
+        }
+    }
+
+
+    function EditImage(ID) {
+        debugger;
+        try {
+            $.ajax({
+                url: "/Gallery/EditgalleryList",
+                type: "GET",
+                datatype: "JSON",
+                data: {
+                    FileId: ID
+                },
+                async: false,
+                success: function (data) {
+                    debugger;
+                    data = JSON.parse(data);
+                    slider_Open('myModal');
+                    $(".slide-popup h4").html('Edit Gallery');
+                    $("#btnSubmit").show();
+                    $("#btnSubmit").val('Update');
+                    $("#btnReset").hide();
+                    $('#hdngalleryid').val(data[0].FileID);
+                    $('#txtfilename').val(data[0].FileName);
+                    if (data[0].IsActive) {
+                    } else {
+                        $('#ddlstatus').val(0);
+                    }
+                    $('#ddlstatus').removeAttr('disabled');
+
+                },
+                error: function (err) {
+                    console.log('Exception from Survey method Name is EditSurvey() :--->' + e);
+                }
+            });
+        } catch (e) {
+            console.log('Exception from Survey method Name is EditSurvey() :--->' + e);
+        }
+    }
+
+    function ResetData() {
+        $("#txtfilename").val('');
+        $("#txtfileupload").val('');
+        $('#ddlstatus').val(1);
+        $('#ddlstatus').prop('disabled', true);
+        $(".slide-popup h4").html('Add Gallery');
+        $('#hdngalleryid').val("");
+        $("#btnSubmit").show();
+        $("#btnSubmit").val('Save');
+        $("#btnReset").show();
+        GetGalleryList();
+
+    }
+</script>
+
+<script>
+
+
+
+    function slider_Closemodel(SliderId) {
+        try {
+            var $modal = $('#' + SliderId);
+
+
+            // Fade out the modal before closing
+            $modal.fadeOut(300, function () {
+                $('.modal-overlay').remove();
+                $('body').css('overflow', 'auto');
+                $(".rform-wrapper, .rform-inner, .pad-box-gray, .add-body-scroll").animate({ scrollTop: 0 }, "slow");
+            });
+        } catch (error) {
+            // Handle the error here
+            console.error("An error occurred:", error);
+        }
+    }
+
+
+    function openModal(imageUrl) {
+        // Get the base URL of the current site
+        var baseUrl = window.location.origin;
+
+        // Check if the URL starts with "http://"
+        if (imageUrl.startsWith("http://")) {
+            // Remove the base URL part from the URL
+            var filepath = imageUrl.replace(baseUrl + "/", "");
+        } else {
+            // Remove the "~/" part from the URL
+            var filepath = imageUrl.replace("~/", "");
+        }
+
+        var Profile = document.querySelector('#UserProfile');
+        var downloadLink = document.querySelector('#downloadLink');
+
+        if (filepath === "") {
+            Profile.src = "../../Uploads/Employee/EmployeePic/ImageAvtar.jpg";
+            downloadLink.setAttribute('href', ''); // Remove the download link
+        } else {
+            Profile.src = baseUrl + "/" + filepath;
+            downloadLink.setAttribute('href', baseUrl + "/" + filepath); // Set the download link
+            $("#descriptionsModal").modal('show');
+        }
+    }
+
+
+
+</script>

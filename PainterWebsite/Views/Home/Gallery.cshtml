@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2 class="gallery-heading">Our Work</h2>
+<div class="row" id="galleryRow"></div>
+
+
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<link href="~/css/GalleryCss.css" rel="stylesheet" />
+<link href="~/css/GalleryCss2.css" rel="stylesheet" />
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/easing/easing.min.js"></script>
+<script src="~/lib/waypoints/waypoints.min.js"></script>
+<script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<script src="~/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        GetAllFileList();
+    });
+
+    function GetAllFileList() {
+        try {
+            $.ajax({
+                url: "/Home/GetAllImageData",
+                method: "GET",
+                data: {},
+                contentType: "application/json",
+                dataType: "json",
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    bindImagesToCards(data);
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error occurred during AJAX call:", error);
+                }
+            });
+        } catch (e) {
+            console.log('Exception from User method Name is SaveUser() :--->' + e);
+        }
+    }
+    function bindImagesToCards(data) {
+        var galleryRow = document.getElementById("galleryRow");
+        galleryRow.innerHTML = '';
+        const baseUrl = window.location.origin;
+
+        data.forEach(function (item, index) {
+            if (item.FilePath && typeof item.FilePath === 'string') {
+                var colDiv = document.createElement("div");
+                colDiv.classList.add("gallery-item");
+
+                var cardDiv = document.createElement("div");
+                cardDiv.classList.add("card");
+
+                var imgElement = document.createElement("img");
+                imgElement.classList.add("card-img-top");
+                var imagePath = item.FilePath.replace('~', baseUrl);
+                imgElement.src = imagePath;
+                imgElement.alt = "Image " + (index + 1);
+
+                var buttonElement = document.createElement("button");
+                buttonElement.classList.add("download-btn");
+                buttonElement.textContent = "Download";
+                buttonElement.onclick = function () {
+                    var link = document.createElement("a");
+                    link.href = imagePath;
+                    link.download = imagePath.split('/').pop();
+                    link.click();
+                };
+
+                cardDiv.appendChild(imgElement);
+                cardDiv.appendChild(buttonElement);
+                colDiv.appendChild(cardDiv);
+                galleryRow.appendChild(colDiv);
+            } else {
+                console.log("Invalid image path for item at index", index);
+            }
+        });
+    }
+
+
+
+
+</script>
