@@ -91,13 +91,8 @@ public class LoginController : Controller
 
     public ActionResult Logout()
     {
-        // Clear authentication cookie
         Response.Cookies["AuthCookie"].Expires = DateTime.Now.AddDays(-1);
-
-        // Abandon session
         Session.Abandon();
-
-        // Redirect to login page after logout
         return RedirectToAction("Login");
     }
 }
